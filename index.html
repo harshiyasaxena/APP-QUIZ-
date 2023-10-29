@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Quiz Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar border">
+            <div class="nav-logo border">
+                <div class="logo "></div>
+            </div>
+            <div class="nav-home ">
+                <div class="add-icon">
+                    <i class="fa-solid fa-house"></i>
+                    <a href="index.html">Home</a>
+                </div>
+            </div>
+            <div class="nav-about"> <a href="About.html" target="_main">About</a></div>
+        <div class="nav-vision "><a href="vision.html" target="_main">Our Vision </a></div>
+         <div class="nav-Support">Support </div>
+        <div class="nav-contact">
+            <div class="add-icon">
+            <i class="fa-solid fa-phone"></i>
+            <a href="contact.html" target="_main">Contact Us</a>
+        </div>
+        </div>
+    </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="registration">
+            <form id="login-form">
+                <h2>Sign In</h2><br>
+                <div class="inputbox">
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
+                    <i></i>
+                </div>
+                <div class="inputbox">
+                    <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+                    <i></i>
+                </div>
+                <input type="submit" value="Login"> <!-- This button triggers the form submission -->
+                <div class="links">
+                    <a href="#">Forgot Password ?</a>
+                    <a href="register.html" id="sign-up-link">Sign Up</a> <!-- Redirect to 'register.html' when clicked -->
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        
+        // Your web app's Firebase configuration
+        // Replace this with your actual Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxX_yMLFj22iroini_7yzhXJUfsoLfiLM",
+            authDomain: "quizify-35fe6.firebaseapp.com",
+            projectId: "quizify-35fe6",
+            storageBucket: "quizify-35fe6.appspot.com",
+            messagingSenderId: "371273641800",
+            appId: "1:371273641800:web:8680530aa257cf8bf64d7d",
+            measurementId: "G-GVVXV8ZQ25"
+        };
+
+        const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app); // Initialize the auth variable
+
+    const form = document.getElementById('login-form');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    const signUpLink = document.getElementById('sign-up-link');
+    signUpLink.addEventListener('click', () => {
+        window.location.href = 'register.html'; // Redirect to 'register.html' when clicked
+    });
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const emailVal = email.value.trim();
+        const passwordVal = password.value.trim();
+
+        try {
+            // Sign in the user with email and password
+            await signInWithEmailAndPassword(auth, emailVal, passwordVal);
+
+            // Redirect to 'portal.html' on successful login
+            window.location.href = 'portal.html';
+        } catch (error) {
+            // Handle login errors (you can also display an error message on the page if needed)
+            console.error(error);
+        }
+    });
+
+</script>
+
+    
+     <div class="category-section">
+        <div class="box1 box">
+            <div class="box-content">
+                <h2>Arrays</h2>
+                <br>
+            <h3> An array is a collection of similar data elements stored at contiguous memory locations. Each data element can be accessed directly by only using its index number.</h3>
+            <br>
+            <a href="https://www.geeksforgeeks.org/array-data-structure/" target="_main" >See More</a>
+            </div>
+        </div>
+        <div class="box2 box">
+            <div class="box-content">
+                <h2>Strings</h2>
+                <br>
+                <h3>Strings are the type of objects that can store the character of values. A string acts in the same way as an array of characters in Java and is an important part of Java.</h3>
+                <br>
+            <div class="box-img2" style="background-image: url('b6.jpg');"></div>
+            <a href="https://www.geeksforgeeks.org/string-data-structure/" target="_main" >See More</a>
+            </div>
+        </div>
+        <div class="box3 box">
+            <div class="box-content">
+                <h2>Abstraction</h2>
+                <br>
+                <h3>Data Abstraction is the property by virtue of which only the essential details are displayed to the user. The trivial or the non-essential units are not displayed to the user. </h3>
+                <br>
+            <a href="https://www.geeksforgeeks.org/abstraction-in-java-2/" target="_main" >See More</a>
+            </div>
+        </div>
+        <div class="box4 box">
+            <div class="box-content">
+                <h2>Encapsulation</h2>
+                <br>
+                <h3>Encapsulation is a way of hiding the implementation details of a class from outside access and only exposing a public interface that can be used to interact with the class.</h3>
+            <a href="https://www.geeksforgeeks.org/encapsulation-in-java/" target="_main">See More</a>
+            </div>
+        </div>
+        <div class="box5 box">
+            <div class="box-content">
+                <h2>Polymorphism</h2>
+                <br>
+                <h3>The word polymorphism means having many forms. In simple words, we can define polymorphism as the ability of a message to be displayed in more than one form. </h3>
+            <a href="https://www.geeksforgeeks.org/polymorphism-in-java/" target="_main">See More</a>
+            </div>
+        </div>
+        <div class="box6 box">
+            <div class="box-content">
+                <h2>Inheritance</h2>
+                <br>
+                <h3>Inheritance means creating new classes based on existing ones. A class that inherits from another class can reuse the methods and fields of that class.</h3>
+                <br>
+                <a href="https://www.geeksforgeeks.org/inheritance-in-java/" target="_main">See More</a>
+            </div>
+        </div>
+        <div class="box7 box">
+            <div class="box-content">
+                <h2>Constructors</h2>
+                <br>
+                <h3>A constructor in Java is a special method that is used to initialize objects. The constructor is called when an object of a class is created.</h3>
+                <br>
+            <a href="https://www.geeksforgeeks.org/constructors-in-java/" target="_main">See More</a>
+            </div>
+        </div>
+        <div class="box8 box">
+            <div class="box-content">
+                <h2>Modifiers</h2>
+                <br>
+                <h3>Access modifiers restrict the scope of a class, constructor, variable, method, or data member. It provides security, accessibility to the user.</h3>
+                <br>
+                <a href="https://www.geeksforgeeks.org/access-modifiers-java/" target="__main">See More</a>
+            </div>
+        </div>
+    </div>
+
+    
+   
+</body>
+</html> 
